@@ -2,6 +2,10 @@
   width: 400px;
   color: black;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   zoom: 1.3;
 }
 
@@ -31,7 +35,7 @@
   margin-top: 0;
 }
 
-.Hangman button {
+.Hangman-letter-button {
   border: none;
   font-family: inherit;
   font-size: 1rem;
@@ -47,12 +51,24 @@
   padding-top: 4px;
 }
 
-.Hangman button:hover {
+.Hangman-letter-button:hover {
   background-color: #ff9800;
 }
 
-.Hangman button:disabled {
+.Hangman-letter-button:disabled {
   background: #bdbdbd;
   color: #eeeeee;
   box-shadow: 0 6px #9e9e9e;
+}
+
+.Hangman-restart-button {
+  display: block;
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(53, 172, 16);
+  color: white;
+  font-weight: 700;
+  letter-spacing: .05em;
 }

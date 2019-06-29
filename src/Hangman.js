@@ -24,6 +24,7 @@ class Hangman extends Component {
       answer: randomWord()
     };
     this.handleGuess = this.handleGuess.bind(this);
+    this.handleRestart = this.handleRestart.bind(this);
   }
 
   /** guessedWord: show current-state of word:
@@ -47,6 +48,13 @@ class Hangman extends Component {
     }));
   }
 
+  handleRestart(evt) {
+    this.setState({
+      nWrong: 0, 
+      guessed: new Set(), 
+      answer: randomWord()
+    })
+  }
   /** generateButtons: return array of letter buttons to render */
   generateButtons() {
     return "abcdefghijklmnopqrstuvwxyz".split("").map((ltr, i) => (
@@ -55,6 +63,7 @@ class Hangman extends Component {
         value={ltr}
         onClick={this.handleGuess}
         disabled={this.state.guessed.has(ltr)}
+        className="Hangman-letter-button"
       >
         {ltr}
       </button>
@@ -73,7 +82,8 @@ class Hangman extends Component {
         {this.state.nWrong < this.props.maxWrong ? 
         <p className='Hangman-btns'>{this.generateButtons()}</p>
         : <h1>You lose! The answer was {this.state.answer}</h1>
-        }        
+        }
+        <button className="Hangman-restart-button" onClick={this.handleRestart}>RESTART</button>        
       </div>
     );
   }
